@@ -1,0 +1,25 @@
+{
+  "name": "tennis-match-register",
+  "version": "1.0.0",
+  "description": "테니스 대회 신청 앱 (react native / node / rest api / mongo)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkoon/tennis-match-register.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkoon/tennis-match-register/issues"
+  },
+  "homepage": "https://github.com/parkoon/tennis-match-register#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12"
+  }
+}

@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, Text, StatusBar, TextInput, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, StatusBar, TextInput, Dimensions, TouchableOpacity, ImageBackground} from 'react-native'
 import { LinearGradient } from 'expo'
 
 // Component
 import CustomButton from './CustomButton'
+import LoginBackground from './LoginBackground'
 
 const { width, height } = Dimensions.get('window')
 console.log('height,!!!!!!!!! ', height)
@@ -20,13 +21,18 @@ class Login extends React.Component {
         return (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.circle} onPress={this._toggleSocial}>
-                    <View >
-                        <Text>
-                            안녕
+                    <View>
+                        <Text style={{fontSize: 30}}>
+                            #
                         </Text>
                     </View>
                 </TouchableOpacity>
                 <View style={styles.upper}>
+           
+                <ImageBackground
+                    style={styles.background}
+                    source={{ uri: 'http://www.habilelabs.io/wp-content/uploads/2017/09/it-background-5.jpg' }}
+                >
                     <View style={styles.upperTop}>
                         <TouchableOpacity style={styles.upperTopButton}>
                             <Text>
@@ -40,20 +46,26 @@ class Login extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.upperMiddle}>
-                        <Text>
+                        <Text style={styles.upperMiddleTitle}>
                             LOGIN
                         </Text>
-                        <TextInput style={styles.input}/>
-                        <TextInput style={styles.input}/>
+                        <TextInput style={styles.input} placeholder="@email"/>
+                        <TextInput style={styles.input} placeholder="password"/>
                     </View>
                     <View style={styles.upperBottom}>
-                        <TextInput style={styles.input}/>
+                        <TouchableOpacity style={styles.upperBottomButton}> 
+                            <Text style={styles.upperBottomButtonTitle}>
+                                GO !
+                            </Text>
+                        </TouchableOpacity>
                     </View>
+    
+                </ImageBackground>
                 </View>
                 <View style={styles.lower}>
                     <View style={styles.row}>
-                        <CustomButton />
-                        <CustomButton />
+                        <CustomButton title={'Login with Facebook'} color={'#5386C2'}/>
+                        <CustomButton title={'Login with Twitter'} color={'#3CCCFC'}/>
                         <TouchableOpacity style={styles.account}>
                             <Text style={styles.accountTitle}>
                                 Create an Account
@@ -100,34 +112,54 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         position: 'relative',
-        backgroundColor: '#FFCDD2',
     },
     upper: {
         flex: 1,
         height: height / 2,
         backgroundColor: '#EC407A',
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '#FAFAFA',
     },
     upperTop: {
         flex: 1, 
         flexDirection: 'row', 
         justifyContent:'space-between', 
-        backgroundColor:'red'
     },
     upperTopButton: {
         padding: 10
     },
     upperMiddle: {
-        flex: 6, backgroundColor:'green'
+        flex: 6,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 50
+    },
+    upperMiddleTitle: {
+        color: 'white',
+        fontSize: 25,
+        marginBottom: 20,
     },
     upperBottom: {
-        flex: 3, backgroundColor:'tomato'
+        flex: 3,
+        alignItems: 'center',
     },
+    upperBottomButton: {
+        width: width / 3,
+        backgroundColor: 'transparent',
+        padding: 20,
+        borderRadius: 10,
+        borderColor: 'white',
+        borderWidth: StyleSheet.hairlineWidth,
+        
+    },
+    upperBottomButtonTitle: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 20,
+    },  
     lower: {
         flex: 1,
         height: height / 2,
-        backgroundColor: '#BA68C8',
+        backgroundColor: '#EEEEEE',
         
     },
     row: {
@@ -149,18 +181,21 @@ const styles = StyleSheet.create({
         top: height / 2 - 40,
         left: width / 2 - 40,
         zIndex: 1,
+        elevation: 3,
+        backgroundColor: 'white',
     },
     account:  {
-        backgroundColor: 'blue',
         paddingBottom: 30,
-        width: width / 1.2,
-        borderBottomColor: '#FAFAFA',
+        width: width / 1.5,
+        borderBottomColor: '#9E9E9E',
         borderBottomWidth: StyleSheet.hairlineWidth,
         marginTop: 30,
 
     },
     accountTitle: {
         textAlign: 'center',
+        fontSize: 16,
+        color: '#757575',
     },
     about: {
         flex: 1,
@@ -169,15 +204,21 @@ const styles = StyleSheet.create({
     },
     aboutTitle: {
         marginHorizontal: 7,
+        color: '#757575',
     },
     input: {
-        width: width / 1.5,
+        width: width / 2,
         height: 50,
         backgroundColor: 'white',
-        borderRadius: 3,
+        borderRadius: 10,
         padding: 10,
         marginVertical: 10,
+        textAlign: 'center',
+        backgroundColor: 'rgba(204, 204, 204, 0.8)',
     },
+    background: {
+        flex: 1,
+    }
     // title: {
     //     fontSize: 38,
     //     color: '#fff',

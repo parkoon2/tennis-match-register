@@ -7,6 +7,8 @@ import {
     Dimensions,
 } from 'react-native'
 
+import { LinearGradient } from 'expo'
+
 const { width, height } = Dimensions.get('window')
 
 class CustomButton extends React.Component {
@@ -15,10 +17,11 @@ class CustomButton extends React.Component {
     }
 
     render() {
+        const { title, color } = this.props
         return (
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={[styles.button, {backgroundColor: color}]}>
                 {/* <View> */}
-                <Text style={styles.title}>Test Button</Text>
+                <Text style={styles.title}>{title}</Text>
                 {/* </View> */}
             </TouchableOpacity>
         )
@@ -27,14 +30,17 @@ class CustomButton extends React.Component {
 
 const styles = StyleSheet.create({
     button: {
-        width: width / 1.2,
+        width: width / 1.5,
         paddingVertical: 25,
-        backgroundColor: 'red',
+        backgroundColor: '#5386C2',
         marginBottom: 15,
+        borderRadius: 10,
     },
 
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        color: 'white',
+        fontSize: 18,
     }
 })
 

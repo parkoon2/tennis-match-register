@@ -8,13 +8,56 @@ import LoginBackground from './LoginBackground'
 
 const { width, height } = Dimensions.get('window')
 console.log('height,!!!!!!!!! ', height)
+
+let email, password
 class Login extends React.Component {
-    constructor() {
-        super()
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: null,
+            password: null,
+        }
     }
 
     _toggleSocial() {
         console.log('_toggleSocial')
+    }
+    _handleChange(e) {
+        console.log(e)
+    }
+    _submit = () => {
+        // const { email, id } = this.state
+        console.log(email, password)
+        this._login()
+    }
+
+    _login = () => {
+        let data = {
+            email,
+            password
+        }
+        console.log('data', data)
+
+        // fetch('	http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=430156241533f1d058c603178cc3ca0e&targetDt=20120101')
+        // .then(res => res.json())
+        // .then(result => console.log(result))
+        fetch('http://192.168.2.200:3000/user/login', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(data) 
+        })
+        .then(res => res.json())
+        .then(result => {
+            if (result.status * 1 === 200) {
+                this.props._loginSuccess()
+            } else {
+                this.props._loginFail()
+            }
+        })
     }
 
     render() {
@@ -31,31 +74,31 @@ class Login extends React.Component {
            
                 <ImageBackground
                     style={styles.background}
-                    source={{ uri: 'http://www.habilelabs.io/wp-content/uploads/2017/09/it-background-5.jpg' }}
+                    source={{ uri: 'https://images7.alphacoders.com/368/368873.jpg' }}
                 >
                     <View style={styles.upperTop}>
                         <TouchableOpacity style={styles.upperTopButton}>
                             <Text>
-                                안녕
+                                {/* 안녕 */}
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.upperTopButton}>
                             <Text>
-                                안녕
+                                {/* 안녕 */}
                         </Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.upperMiddle}>
                         <Text style={styles.upperMiddleTitle}>
-                            LOGIN
+                            TENNIS MATCHING
                         </Text>
-                        <TextInput style={styles.input} placeholder="@email"/>
-                        <TextInput style={styles.input} placeholder="password"/>
+                        <TextInput onChangeText={(text) => email = text} style={styles.input} placeholder="@email"/>
+                        <TextInput onChangeText={(text) => password = text} secureTextEntry={true} style={styles.input} placeholder="password"/>
                     </View>
                     <View style={styles.upperBottom}>
-                        <TouchableOpacity style={styles.upperBottomButton}> 
+                        <TouchableOpacity onPress={this._submit} style={styles.upperBottomButton}> 
                             <Text style={styles.upperBottomButtonTitle}>
-                                GO !
+                                LOGIN
                             </Text>
                         </TouchableOpacity>
                     </View>

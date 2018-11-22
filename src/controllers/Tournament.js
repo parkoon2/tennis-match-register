@@ -1,7 +1,7 @@
 const Tournament = require('../models/Tournament')
 
 const registTournament = (req, res) => {
-    const { title, date } = req.body
+    const { title, date, poster } = req.body
     Tournament.findOne()
         .where('title').equals(title)
         .where('date').equals(date)
@@ -9,7 +9,8 @@ const registTournament = (req, res) => {
             if (!tournament) {
                 Tournament.create({
                     title,
-                    date
+                    date,
+                    poster
                 })
                 .then(result => {
                     res.json({

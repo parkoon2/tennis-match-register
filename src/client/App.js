@@ -10,12 +10,24 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      isAuthenticated: true
+      isAuthenticated: false
     }
   }
 
   componentDidMount() {
     console.log('!!!')
+  }
+
+  _loginSuccess = () => {
+    alert('로그인 성공')
+    this.setState({
+      isAuthenticated: true
+    })
+  }
+  
+  _loginFail = () => {
+    alert('로그인 실패')
+
   }
 
   render() {
@@ -26,7 +38,11 @@ export default class App extends React.Component {
         { this.state.isAuthenticated ? (
           <Main />
         ) : (
-          <Login />
+          <Login 
+            _loginSuccess={this._loginSuccess}
+            _loginFail={this._loginFail}
+            
+            />
         )
         }
       </View>

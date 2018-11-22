@@ -23,6 +23,10 @@ const tournamentSchema = new Schema({
         type: String,
         required: true,
     },
+    poster: {
+        type: String,
+        required: true
+    },
     users: [enrolledUserSchema]
 })
 

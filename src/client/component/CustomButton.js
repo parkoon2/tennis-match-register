@@ -31,7 +31,7 @@ class CustomButton extends React.Component {
 const styles = StyleSheet.create({
     button: {
         width: width / 1.5,
-        paddingVertical: 25,
+        paddingVertical: 10,
         backgroundColor: '#5386C2',
         marginBottom: 15,
         borderRadius: 10,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     title: {
         textAlign: 'center',
         color: 'white',
-        fontSize: 18,
+        fontSize: 17,
     }
 })
 

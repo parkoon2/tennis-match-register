@@ -1,10 +1,12 @@
 import React from 'react'
 import { StyleSheet, View, Text, StatusBar, TextInput, Dimensions, TouchableOpacity, ImageBackground} from 'react-native'
 import { LinearGradient } from 'expo'
+import { Ionicons } from '@expo/vector-icons'
 
 // Component
 import CustomButton from './CustomButton'
 import LoginBackground from './LoginBackground'
+
 
 const { width, height } = Dimensions.get('window')
 console.log('height,!!!!!!!!! ', height)
@@ -65,9 +67,7 @@ class Login extends React.Component {
             <View style={styles.container}>
                 <TouchableOpacity style={styles.circle} onPress={this._toggleSocial}>
                     <View>
-                        <Text style={{fontSize: 30}}>
-                            #
-                        </Text>
+                        <Ionicons name="md-tennisball" size={30} color="green"></Ionicons>
                     </View>
                 </TouchableOpacity>
                 <View style={styles.upper}>
@@ -77,16 +77,14 @@ class Login extends React.Component {
                     source={{ uri: 'https://images7.alphacoders.com/368/368873.jpg' }}
                 >
                     <View style={styles.upperTop}>
-                        <TouchableOpacity style={styles.upperTopButton}>
+                        {/* <TouchableOpacity style={styles.upperTopButton}>
                             <Text>
-                                {/* 안녕 */}
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.upperTopButton}>
                             <Text>
-                                {/* 안녕 */}
                         </Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                     <View style={styles.upperMiddle}>
                         <Text style={styles.upperMiddleTitle}>
@@ -174,7 +172,7 @@ const styles = StyleSheet.create({
         flex: 6,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 50
+        paddingTop: 30
     },
     upperMiddleTitle: {
         color: 'white',
@@ -188,7 +186,7 @@ const styles = StyleSheet.create({
     upperBottomButton: {
         width: width / 3,
         backgroundColor: 'transparent',
-        padding: 20,
+        padding: 10,
         borderRadius: 10,
         borderColor: 'white',
         borderWidth: StyleSheet.hairlineWidth,
@@ -209,20 +207,20 @@ const styles = StyleSheet.create({
         flex: 2,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        marginTop: 100,
+        marginTop: 80,
     },
     circle: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 80,
-        height: 80,
-        borderRadius: 40,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
         textAlign: 'center',
         backgroundColor: '#F3E5F5',
         position: 'absolute',
-        top: height / 2 - 40,
-        left: width / 2 - 40,
+        top: height / 2 - 10,
+        left: width / 2 - 30,
         zIndex: 1,
         elevation: 3,
         backgroundColor: 'white',
@@ -250,12 +248,12 @@ const styles = StyleSheet.create({
         color: '#757575',
     },
     input: {
-        width: width / 2,
+        width: width / 1.8,
         height: 50,
         backgroundColor: 'white',
         borderRadius: 10,
         padding: 10,
-        marginVertical: 10,
+        marginVertical: 9,
         textAlign: 'center',
         backgroundColor: 'rgba(204, 204, 204, 0.8)',
     },
